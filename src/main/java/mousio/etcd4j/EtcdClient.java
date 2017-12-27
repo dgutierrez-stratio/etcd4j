@@ -19,14 +19,7 @@ import io.netty.handler.ssl.SslContext;
 import mousio.client.retry.RetryPolicy;
 import mousio.client.retry.RetryWithExponentialBackOff;
 import mousio.etcd4j.requests.*;
-import mousio.etcd4j.responses.EtcdAuthenticationException;
-import mousio.etcd4j.responses.EtcdException;
-import mousio.etcd4j.responses.EtcdHealthResponse;
-import mousio.etcd4j.responses.EtcdMembersResponse;
-import mousio.etcd4j.responses.EtcdSelfStatsResponse;
-import mousio.etcd4j.responses.EtcdStoreStatsResponse;
-import mousio.etcd4j.responses.EtcdVersionResponse;
-import mousio.etcd4j.responses.EtcdLeaderStatsResponse;
+import mousio.etcd4j.responses.*;
 import mousio.etcd4j.transport.EtcdClientImpl;
 import mousio.etcd4j.transport.EtcdNettyClient;
 
@@ -214,13 +207,13 @@ public class EtcdClient implements Closeable {
   }
 
   /**
-  * Refresh a key with new ttl
-  * (without notifying watchers when using etcd 2.3+)
-  *
-  * @param key to refresh
-  * @param ttl to update key with
-  * @return EtcdKeysRequest
-  */
+   * Refresh a key with new ttl
+   * (without notifying watchers when using etcd 2.3+)
+   *
+   * @param key to refresh
+   * @param ttl to update key with
+   * @return EtcdKeysRequest
+   */
   public EtcdKeyPutRequest refresh(String key, Integer ttl) {
     return new EtcdKeyPutRequest(client, key, retryHandler).refresh(ttl);
   }
